@@ -7,14 +7,10 @@ typedef struct
 
     int modulo; // Para diferenciar se ele é bemol(-1), sustenido(1) e normal(0)
 
-    float frequencia;
-
 } Nota;
 
-void ReadFile(char *ArqNome);
-Nota OrdenaTexto(int Ttexto, char *texto);
-Nota OrdenaBusca(int Tbusca, char *busca);
-void FuncaoTemporaria(int Ttexto, char *texto, int Tbusca, char *busca);
+void ReadFile(char *ArqNome,char *K);
+void FuncAux(int Ttexto, char *texto, int Tbusca, char *busca,char *K);
 int AtribuiModulo(char M);
 
 #endif

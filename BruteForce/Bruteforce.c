@@ -1,11 +1,23 @@
 #include "Bruteforce.h"
 #include <stdio.h>
 #include "../read.h"
+#include "../write.h"
 
-void ForcaBruta(Nota *Texto, Nota *Busca, int TamanhoBusca)
+void ForcaBruta(Nota *Texto, Nota *Busca, int TamanhoBusca, int TTexto)
 {
     int c = 0;
     int e = 0;
+
+    int encontrado = 0;
+
+    char P[TTexto];
+
+    int ct = 0;
+
+    for (int x = 0; x < TTexto; x++)
+    {
+        P[x] = '-';
+    }
 
     for (int t = 0; Texto[t + TamanhoBusca].N != '\0'; t++)
     {
@@ -18,11 +30,35 @@ void ForcaBruta(Nota *Texto, Nota *Busca, int TamanhoBusca)
 
             if (c == e)
             {
+
                 count++;
                 if (count == TamanhoBusca - 1)
-                    printf("\nEncontrei: %d\n", t);
+                {
+                    encontrado = 1;
+                    P[ct] = t;
+                    ct++;
+                }
             }
         }
+    }
+    if (encontrado == 1)
+    {
+        printf("S ");
+        char S = 'S';
+        grava(S);
+        
+    }
+    else 
+    {
+        printf("N ");
+        char N = 'N';
+        grava(N);
+    }
+    //Imprime os valores das posições onde se inicia o 
+    for (int x = 0;P[x] != '-'; x++)
+    {
+        printf("%d", P[x]);
+        gravaN(P[x]);
     }
 }
 
@@ -108,24 +144,23 @@ int Distancia(char C1, int M1, char C2, int M2)
     ListaBem[11].N = 'A';
     ListaBem[11].modulo = -1; // Bemol
 
-    int R1,R2 = 0;
+    int R1, R2 = 0;
 
-    if(M1 == -1)
+    if (M1 == -1)
     {
-        R1 = Procurar(ListaBem,C1,M1);
+        R1 = Procurar(ListaBem, C1, M1);
     }
     else
     {
-        R1 = Procurar(ListaSus,C1,M1);
+        R1 = Procurar(ListaSus, C1, M1);
     }
-    if(M2 == -1)
+    if (M2 == -1)
     {
-        R2 = Procurar(ListaBem,C2,M2);
-        
+        R2 = Procurar(ListaBem, C2, M2);
     }
     else
     {
-        R2 = Procurar(ListaSus,C2,M2);
+        R2 = Procurar(ListaSus, C2, M2);
     }
 
     // Retornamos a Distancia de R1 para R2
