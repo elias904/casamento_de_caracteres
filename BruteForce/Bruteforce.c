@@ -4,6 +4,8 @@
 #include "../write.h"
 #include "sys/time.h"
 
+
+//Função que recebe os valores da FuncAux e aplica o algoritmo de Força Bruta.
 void ForcaBruta(Nota *Texto, Nota *Busca, int TamanhoBusca, int TTexto)
 {
     

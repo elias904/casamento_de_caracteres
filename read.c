@@ -7,11 +7,12 @@
 #include "BMH/bmh.h"
 #include "write.h"
 
+// Função para leitura do arquivo
 void ReadFile(char *ArqNome, char *K)
 {
     FILE *ArqP = NULL;
 
-    //Processo para recriar o arquivo a cada chamada da função
+    // Processo para recriar o arquivo a cada chamada da função
     FILE *cArq = NULL;
 
     cArq = fopen("tp3.out", "w");
@@ -21,14 +22,20 @@ void ReadFile(char *ArqNome, char *K)
 
     ArqP = fopen(ArqNome, "r");
 
+    // um - recebe o tamanho do texto
+    // dois - recebe o tamanho do padrão
     int um, dois = 0;
 
+    // Recebe o texto
     char Linha_0[100];
 
+    // Recebe o padrão
     char Linha_1[100];
 
+    //Varíavel para saber em qual linha estamos
     int count = 0;
 
+    //Acontece enquanto o arquivo tiver algo a ler
     while (!feof(ArqP))
     {
         fscanf(ArqP, "%d %d", &um, &dois);
@@ -51,6 +58,7 @@ void ReadFile(char *ArqNome, char *K)
     printf("\n");
 }
 
+// Função que recebe os valores da leitura e os processa os colocando dentro de um vetor do struct Nota
 void FuncAux(int Ttexto, char *texto, int Tbusca, char *busca, char *K)
 {
 
@@ -90,7 +98,7 @@ void FuncAux(int Ttexto, char *texto, int Tbusca, char *busca, char *K)
         }
     }
 
-    //Chamada dos algoritmos
+    // Chamada dos algoritmos
     if (K[0] == '1')
     {
         ForcaBruta(NotasTexto, NotasBusca, Tbusca, Ttexto);

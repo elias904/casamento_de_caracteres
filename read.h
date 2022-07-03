@@ -1,6 +1,9 @@
 #ifndef READ_H_
 #define READ_H_
 
+
+
+//struct para o armazenamento das notas
 typedef struct
 {
     char N; // O caracter em si ( Nota )
@@ -10,7 +13,9 @@ typedef struct
 } Nota;
 
 void ReadFile(char *ArqNome,char *K);
+
 void FuncAux(int Ttexto, char *texto, int Tbusca, char *busca,char *K);
+
 int AtribuiModulo(char M);
 
 #endif

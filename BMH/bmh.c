@@ -7,6 +7,7 @@
 #include "../write.h"
 #include "sys/time.h"
 
+//recebe os valores de FuncAux e aplica o algoritmo de BMH
 void BoyerMooreHorspool(Nota *Texto, Nota *Busca, int TTexto, int TBusca)
 {
     struct timeval start;
