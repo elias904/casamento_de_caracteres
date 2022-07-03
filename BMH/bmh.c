@@ -1,12 +1,20 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "../read.h"
 #include "../BruteForce/Bruteforce.h"
 #include "bmh.h"
 #include "../write.h"
+#include "sys/time.h"
 
 void BoyerMooreHorspool(Nota *Texto, Nota *Busca, int TTexto, int TBusca)
 {
+    struct timeval start;
+    struct timeval end;
+
+    gettimeofday(&start,NULL);
+
+    //string para armazenas a possíveis posições caso haja mais de 1 ocorrência do meu padrão
     char P[TTexto];
 
     for (int x = 0; x < TTexto; x++)
@@ -18,38 +26,40 @@ void BoyerMooreHorspool(Nota *Texto, Nota *Busca, int TTexto, int TBusca)
     // Vetor em que cada indice indica as distancias
     int d[12];
 
+    //2 vetores para armazenar as distâncias do texto(dTexto) e do padrão(dBusca)
     int dBusca[TBusca - 2];
     int dTexto[TTexto - 2];
 
     int x = 0;
 
-    
+
     for (x = 0; x < TBusca - 1; x++)
     {
         dBusca[x] = Distancia(Busca[x].N, Busca[x].modulo, Busca[x + 1].N, Busca[x + 1].modulo);
-       
+
     }
 
-    
+
     for (x = 0; x < TTexto - 1; x++)
     {
         dTexto[x] = Distancia(Texto[x].N, Texto[x].modulo, Texto[x + 1].N, Texto[x + 1].modulo);
-        
+
     }
-    
+
 
     for (int x = 0; x <= 12; x++)
     {
         // Todos recebem o valor do Tamanho da Busca(Padrao)
         d[x] = TBusca - 1;
     }
-    
 
+
+    //Efetivamente termina de fazer a bad table match, tabela com os pulos, considerando o pré processamento do padrão
     for (int x = 0; x < TBusca - 2; x++)
     {
         // Valor = Tamanho - index - 1
         d[dBusca[x]] = TBusca - 2 - x ;
-    } 
+    }
 
 
     // Indices do final da minha lista de distâncias(dTexto e dBusca)
@@ -63,6 +73,7 @@ void BoyerMooreHorspool(Nota *Texto, Nota *Busca, int TTexto, int TBusca)
 
     int achou = 0;
 
+    //varíavel para saber se há ao menos uma ocorrência do padrão
     int encontrado = 0;
 
     //Indice para o vetor de posições
@@ -86,10 +97,12 @@ void BoyerMooreHorspool(Nota *Texto, Nota *Busca, int TTexto, int TBusca)
 
         while (dBusca[b] == dTexto[t + b])
         {
-            
+
             b--;
             count++;
             achou = 1;
+            if (count == IBusca + 1)
+                break;
 
         }
         if (count == IBusca + 1 && achou == 1)
@@ -104,22 +117,25 @@ void BoyerMooreHorspool(Nota *Texto, Nota *Busca, int TTexto, int TBusca)
             t += d[dTexto[b + t]];
         }
     }
-    if(encontrado == 1)
+    gettimeofday(&end,NULL);
+
+    printf("%ld(ms)\n",end.tv_usec - start.tv_usec);
+
+    if (encontrado == 1)
     {
-        printf("S ");
+        //printf("S ");
         char S = 'S';
         grava(S);
+        for (int r = 0; P[r] != '-'; r++)
+        {
+            gravaN(P[r]);
+            //printf("%d", P[r]);
+        }
     }
     else
     {
-        printf("N ");
+        //printf("N ");
         char N = 'N';
         grava(N);
-    }
-    //Sinaliza que consigo armazenar as posições dentro da string
-    for (int r = 0;P[r] != '-'; r++)
-    {
-        printf("%d", P[r]);
-        gravaN(P[r]);
     }
 }

@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed Jun 29 17:01:02 2022
+# Make data base, printed on Sun Jul  3 10:27:14 2022
 
 # Variables
 
@@ -15,7 +15,7 @@ GDK_BACKEND = x11
 # environment
 LC_ALL = C
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-60b7757c-7882-419b-9545-a90a420e5eba.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-3df4916b-d3ea-474a-9b0f-9308e889f4a6.sock
 # environment
 LC_NAME = pt_BR.UTF-8
 # environment
@@ -35,7 +35,7 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
 .VARIABLES := 
 # environment
-PWD = /home/mendeszika/Documentos/TP3 - Casamento de Caracteres/Studio_TP3
+PWD = /home/mendeszika/Downloads/casamento_de_caracteres-main
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # environment
@@ -61,11 +61,11 @@ XAUTHORITY = /home/mendeszika/.Xauthority
 # makefile
 MAKEFLAGS = pqrR
 # makefile
-CURDIR := /home/mendeszika/Documentos/TP3 - Casamento de Caracteres/Studio_TP3
+CURDIR := /home/mendeszika/Downloads/casamento_de_caracteres-main
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # automatic
@@ -73,7 +73,7 @@ LESSOPEN = | /usr/bin/lesspipe %s
 # environment
 MFLAGS = -pqrR
 # environment
-SSH_AUTH_SOCK = /tmp/ssh-XXXXXX6DNbJp/agent.988
+SSH_AUTH_SOCK = /tmp/ssh-XXXXXX1dqV50/agent.983
 # default
 .SHELLFLAGS := -c
 # environment
@@ -89,7 +89,7 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 1223
+VSCODE_PID = 1220
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
@@ -181,7 +181,7 @@ MAKE_VERSION := 4.3
 # environment
 LC_MEASUREMENT = pt_BR.UTF-8
 # environment
-SSH_AGENT_PID = 1037
+SSH_AGENT_PID = 1030
 # environment
 _ = /usr/share/code/code
 # environment
@@ -231,9 +231,9 @@ LC_IDENTIFICATION = pt_BR.UTF-8
 
 # Directories
 
-# . (device 2049, inode 1066761): 12 files, no impossibilities.
+# . (device 2049, inode 852525): 18 files, no impossibilities.
 
-# 12 files, no impossibilities in 1 directories.
+# 18 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -244,7 +244,7 @@ LC_IDENTIFICATION = pt_BR.UTF-8
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-17 19:44:33.495249631
+#  Last modified 2022-06-30 14:53:33
 #  File has been updated.
 #  Successfully updated.
 
@@ -281,7 +281,7 @@ all:
 # Load=8/32=25%, Rehash=0, Collisions=1/11=9%
  
 #  recipe to execute (from 'Makefile', line 2):
-	gcc -g tp3.c read.c BruteForce/Bruteforce.c BMH/bmh.c -o Programa -lm
+	gcc -g tp3.c read.c BruteForce/Bruteforce.c BMH/bmh.c write.c -o tp3 -lm
 
 # Not a target:
 .SUFFIXES:
@@ -297,12 +297,12 @@ all:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 17 / storage = 140 B / avg = 8 B
-# current buf: size = 8162 B / used = 140 B / count = 17 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 23 / storage = 195 B / avg = 8 B
+# current buf: size = 8162 B / used = 195 B / count = 23 / avg = 8 B
 
-# strcache performance: lookups = 24 / hit rate = 29%
+# strcache performance: lookups = 30 / hit rate = 23%
 # hash-table stats:
-# Load=17/8192=0%, Rehash=0, Collisions=0/24=0%
-# Finished Make data base on Wed Jun 29 17:01:02 2022
+# Load=23/8192=0%, Rehash=0, Collisions=0/30=0%
+# Finished Make data base on Sun Jul  3 10:27:14 2022
 
  

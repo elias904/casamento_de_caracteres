@@ -34,7 +34,7 @@ void ReadFile(char *ArqNome, char *K)
         fscanf(ArqP, "%d %d", &um, &dois);
         if (um == 0 && dois == 0)
             break;
-        //printf("\n\nLinha[%d]", count);
+        printf("\n\nLinha[%d]", count);
         printf("\n");
         grava('\n');
         fgetc(ArqP);

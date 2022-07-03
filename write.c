@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "write.h"
 
+//Se for uma letra 
 void grava(char K)
 {
     FILE *Arq = NULL;
@@ -9,6 +10,7 @@ void grava(char K)
     fprintf(Arq, "%c ", K);
     fclose(Arq);
 }
+//Se for um numero
 void gravaN(char K)
 {
     FILE *Arq = NULL;

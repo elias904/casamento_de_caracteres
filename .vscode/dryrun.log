@@ -1,5 +1,5 @@
 make --dry-run --always-make --keep-going --print-directory
-make: Entering directory '/home/mendeszika/Documentos/TP3 - Casamento de Caracteres/Studio_TP3'
-gcc -g tp3.c read.c BruteForce/Bruteforce.c BMH/bmh.c -o Programa -lm
-make: Leaving directory '/home/mendeszika/Documentos/TP3 - Casamento de Caracteres/Studio_TP3'
+make: Entering directory '/home/mendeszika/Downloads/casamento_de_caracteres-main'
+gcc -g tp3.c read.c BruteForce/Bruteforce.c BMH/bmh.c write.c -o tp3 -lm
+make: Leaving directory '/home/mendeszika/Downloads/casamento_de_caracteres-main'
  

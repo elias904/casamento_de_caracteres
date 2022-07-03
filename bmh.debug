@@ -44,17 +44,16 @@ void BoyerMooreHorspool(Nota *Texto, Nota *Busca, int TTexto, int TBusca)
         // Todos recebem o valor do Tamanho da Busca(Padrao)
         d[x] = TBusca - 1;
     }
-    
 
     for (int x = 0; x < TBusca - 2; x++)
     {
         // Valor = Tamanho - index - 1
-        d[dBusca[x]] = TBusca - 2 - x ;
-    } 
-     /* for (int w = 0; w < 12; w++)
-     {
-         printf("\nValores de d[%d]: %d\n", w, d[w]);
-     }  */
+        d[dBusca[x]] = TBusca - 2 - x;
+    }
+    /* for (int w = 0; w < 12; w++)
+    {
+        printf("\nValores de d[%d]: %d\n", w, d[w]);
+    } */
 
     printf("-------------------------------\n");
 
@@ -71,7 +70,7 @@ void BoyerMooreHorspool(Nota *Texto, Nota *Busca, int TTexto, int TBusca)
 
     int encontrado = 0;
 
-    //Indice para o vetor de posições
+    // Indice para o vetor de posições
     int q = 0;
 
     // para poder ver quantas comparações deram sucesso consecutivamente
@@ -89,20 +88,21 @@ void BoyerMooreHorspool(Nota *Texto, Nota *Busca, int TTexto, int TBusca)
 
         // while para poder comparar os elementos de padrão e texto
         // começamos do final de padrão e em texto, temos t(inicio) + b, para poder fazer a comparação correta
-        //printf("\nValor de b: %d e t: %d e t + b: %d\n", b, t, t + b);
+        // printf("\nValor de b: %d e t: %d e t + b: %d\n", b, t, t + b);
 
         while (dBusca[b] == dTexto[t + b])
         {
-            //printf("Match[%d]-[%d]\n", dBusca[b], dTexto[t + b]);
+            // printf("Match[%d]-[%d]\n", dBusca[b], dTexto[t + b]);
             b--;
             count++;
             achou = 1;
-
+            if (count == IBusca + 1)
+                break;
         }
         if (count == IBusca + 1 && achou == 1)
         {
             encontrado = 1;
-            //printf("\nPadrao encontrado: %d\n", t);
+            // printf("\nPadrao encontrado: %d\n", t);
             P[q] = t;
             q++;
             t += 1;
@@ -112,10 +112,21 @@ void BoyerMooreHorspool(Nota *Texto, Nota *Busca, int TTexto, int TBusca)
             t += d[dTexto[b + t]];
         }
     }
-
-    //Sinaliza que consigo armazenar as posições dentro da string
-    for (int r = 0;P[r] != '-'; r++)
+    if (encontrado == 1)
     {
-        printf("Posicao Padrao: %d", P[r]);
+        printf("S ");
+        char S = 'S';
+        grava(S);
+        for (int r = 0; P[r] != '-'; r++)
+        {
+            gravaN(P[r]);
+            printf("%d", P[r]);
+        }
+    }
+    else
+    {
+        printf("N ");
+        char N = 'N';
+        grava(N);
     }
 }

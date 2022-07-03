@@ -2,14 +2,23 @@
 #include <stdio.h>
 #include "../read.h"
 #include "../write.h"
+#include "sys/time.h"
 
 void ForcaBruta(Nota *Texto, Nota *Busca, int TamanhoBusca, int TTexto)
 {
+    
+    struct timeval start;
+    struct timeval end;
+
+    gettimeofday(&start, NULL);
+
     int c = 0;
     int e = 0;
 
+    //variavel que define se existe ao menos uma ocorrência do padrão
     int encontrado = 0;
 
+    //string para armazenar as posições caso ocorra mais de uma ocorrência do meu padrão
     char P[TTexto];
 
     int ct = 0;
@@ -41,31 +50,36 @@ void ForcaBruta(Nota *Texto, Nota *Busca, int TamanhoBusca, int TTexto)
             }
         }
     }
+    gettimeofday(&end, NULL);
+
     if (encontrado == 1)
     {
-        printf("S ");
+        //printf("S ");
         char S = 'S';
         grava(S);
-        
     }
-    else 
+    else
     {
-        printf("N ");
+        //printf("N ");
         char N = 'N';
         grava(N);
     }
-    //Imprime os valores das posições onde se inicia o 
-    for (int x = 0;P[x] != '-'; x++)
+    // Imprime os valores das posições onde se inicia o
+    for (int x = 0; P[x] != '-'; x++)
     {
-        printf("%d", P[x]);
+        //printf("%d", P[x]);
         gravaN(P[x]);
     }
+    printf("%ld(ms)\n", end.tv_usec - start.tv_usec);
 }
 
-// C1 - Caracter1, C2 - Caracter2, M1 - Modulo de 1, M2 - Modulo de 2
-//Busca a distancia entre C1 e C2
+
+// Busca a distancia entre Caracter1(C1) e Caracter2(C2)
 int Distancia(char C1, int M1, char C2, int M2)
 {
+
+    // C1 - Caracter1, C2 - Caracter2, M1 - Modulo de 1, M2 - Modulo de 2
+
     // Lista considerando sustenidos
     Nota ListaSus[12];
 
@@ -105,7 +119,7 @@ int Distancia(char C1, int M1, char C2, int M2)
     ListaSus[11].N = 'G';
     ListaSus[11].modulo = 1; // Sustenido
 
-    //Lista de Notas considerando os bemois
+    // Lista de Notas considerando os bemois
     Nota ListaBem[12];
 
     ListaBem[0].N = 'A';
@@ -186,6 +200,7 @@ int Distancia(char C1, int M1, char C2, int M2)
     }
 }
 
+//Retorna a posição de uma nota
 int Procurar(Nota *Lista, char C, int modulo)
 {
     int i = 0;
